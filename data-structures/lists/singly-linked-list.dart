@@ -5,7 +5,7 @@ class SinglyLinkedList<T> {
   int length = 0;
 
   bool get isEmpty => _head == null;
-  Node<T> get last {
+  Node<T> get _last {
     var node = _head!;
     while (node.next != null) {
       node = node.next as Node<T>;
@@ -28,7 +28,7 @@ class SinglyLinkedList<T> {
     if (isEmpty) {
       _head = node;
     } else {
-      last.next = node;
+      _last.next = node;
     }
     length++;
     return this;
@@ -47,12 +47,12 @@ class SinglyLinkedList<T> {
     if (isEmpty) {
       _head = nodes[0];
     } else {
-      last.next = nodes[0];
+      _last.next = nodes[0];
     }
     return this;
   }
 
-  T peek() => last.value;
+  T peek() => _last.value;
 
   String toString() {
     List<String> strings = [];
@@ -67,5 +67,11 @@ class SinglyLinkedList<T> {
 
 void main() {
   var l = SinglyLinkedList<int>();
-  print(l.insertAll([1, 2, 3, 4, 5]));
+  l.insertAll([1, 2, 3, 4, 5]);
+  assert(l.toString() == "1,2,3,4,5");
+  l.insert(6);
+  assert(l.peek() == 6);
+  var mapped = l.map((value) => value * 2);
+  assert(mapped.toString() == "2,4,6,8,10,12");
+  assert(mapped.peek() == 12);
 }
