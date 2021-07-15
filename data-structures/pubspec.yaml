@@ -1,0 +1,7 @@
+name: dart_ds_algo
+version: 0.1.0
+description: Data Strucutures and Algorithms in Dart
+environment:
+  sdk: ">= 2.13.0"
+dependencies:
+  collection: ^1.15.0

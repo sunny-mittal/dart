@@ -1,4 +1,5 @@
 import 'node.dart';
+import 'package:collection/collection.dart';
 
 class SinglyLinkedList<T> {
   Node<T>? _head;
@@ -13,8 +14,8 @@ class SinglyLinkedList<T> {
     return node;
   }
 
-  SinglyLinkedList map(dynamic Function(T) fn) {
-    var list = SinglyLinkedList();
+  SinglyLinkedList<U> map<U>(U Function(T) fn) {
+    var list = SinglyLinkedList<U>();
     var node = _head;
     while (node != null) {
       list.insert(fn(node.value));
@@ -54,6 +55,16 @@ class SinglyLinkedList<T> {
 
   T peek() => _last.value;
 
+  List<T> toList() {
+    List<T> list = [];
+    var node = _head;
+    while (node != null) {
+      list.add(node.value);
+      node = node.next;
+    }
+    return list;
+  }
+
   String toString() {
     List<String> strings = [];
     var node = _head;
@@ -71,7 +82,8 @@ void main() {
   assert(l.toString() == "1,2,3,4,5");
   l.insert(6);
   assert(l.peek() == 6);
-  var mapped = l.map((value) => value * 2);
-  assert(mapped.toString() == "2,4,6,8,10,12");
-  assert(mapped.peek() == 12);
+  var mapped = l.map((value) => value.toString());
+  var list = mapped.toList();
+  assert(const ListEquality().equals(list, ["1", "2", "3", "4", "5", "6"]));
+  assert(mapped.toList().every((element) => element.runtimeType == String));
 }

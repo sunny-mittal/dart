@@ -1,0 +1,20 @@
+{
+  "configVersion": 2,
+  "packages": [
+    {
+      "name": "collection",
+      "rootUri": "file:///Users/sunnymittal/.pub-cache/hosted/pub.dartlang.org/collection-1.15.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "dart_ds_algo",
+      "rootUri": "../",
+      "packageUri": "lib/",
+      "languageVersion": "2.13"
+    }
+  ],
+  "generated": "2021-07-15T06:05:10.614678Z",
+  "generator": "pub",
+  "generatorVersion": "2.13.4"
+}
